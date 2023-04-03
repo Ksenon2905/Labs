@@ -18,19 +18,19 @@ Terraform version
 
 1)Створити новий проект:
 
-![](screenshots\screen2.png)
+![](screenshots/screen2.png)
 
 2)Створимо сервіс акаунт:
 
 Перейдемо у Dashboard – Service Account. Створимо сервіс акаунт натиснувши на кнопку Create Service Account,  назвемо його, призначимо ID і видамо роль.
 
-![](screenshots\screen3.png)
+![](screenshots/screen3.png)
 
 3)Створимо ключ доступу 
 
 Перейдемо в Action – Manage keys та створимо ключ у форматі JSON.
 
-![](screenshots\screen4.png)
+![](screenshots/screen4.png)
 
 4)	Налаштуємо terraform
 
@@ -147,7 +147,7 @@ terraform init
 
 Отримуємо наступне:
 
-![](screenshots\screen5.png)
+![](screenshots/screen5.png)
 
 Далі пишемо:
 
@@ -155,7 +155,7 @@ terraform apply
 
 Отримаємо список того, що планує зробити terraform:
 
-![](screenshots\screen6.png)
+![](screenshots/screen6.png)
 
 Пишемо  "yes" і чекаємо на створення віртуальної машини і її структури.
 
@@ -172,10 +172,10 @@ ip_intra = "10.128.0.2"
 
 Подивимося чи вірно все було створино:
 
-![](screenshots\screen7.png)
-![](screenshots\screen8.png)
-![](screenshots\screen9.png)
-![](screenshots\screen10.png)
+![](screenshots/screen7.png)
+![](screenshots/screen8.png)
+![](screenshots/screen9.png)
+![](screenshots/screen10.png)
 
 Із рисунків бачимо, що машина була створена коректно. 
 
@@ -183,8 +183,8 @@ ip_intra = "10.128.0.2"
 
 terraform destroy
 
-![](screenshots\screen11.png)
+![](screenshots/screen11.png)
 
-![](screenshots\screen12.png)
+![](screenshots/screen12.png)
 
 В нас не залишилося ні віртуальної машини, ні мережі, terraform виконав видалення вірно, чого ми й хотіли.
