@@ -1,43 +1,43 @@
-﻿Лабораторна робота 3
+﻿# Лабораторна робота 3
 
-1.Встановлення Terraform
+# 1.Встановлення Terraform
 
 Для встановлення Terraform використаємо chocolatey:
-
+```
 choco install terraform
-
+```
 Після цього перевіримо установку terraform:
-
+```
 Terraform version
-
+```
 ![](screenshots/screen1.png)
 
-2.Автоматизація створення віртуальної машини
+# 2.Автоматизація створення віртуальної машини
 
 Створимо віртуальну машину автоматизовано. Для цього треба виконати декілька дій:
 
-1)Створити новий проект:
+# 1)Створити новий проект:
 
 ![](screenshots/screen2.png)
 
-2)Створимо сервіс акаунт:
+# 2)Створимо сервіс акаунт:
 
 Перейдемо у Dashboard – Service Account. Створимо сервіс акаунт натиснувши на кнопку Create Service Account,  назвемо його, призначимо ID і видамо роль.
 
 ![](screenshots/screen3.png)
 
-3)Створимо ключ доступу 
+# 3)Створимо ключ доступу 
 
 Перейдемо в Action – Manage keys та створимо ключ у форматі JSON.
 
 ![](screenshots/screen4.png)
 
-4)	Налаштуємо terraform
+# 4)	Налаштуємо terraform
 
 Створимо робочу директорію для terraform. Після цього створимо 3 файли: main.tf, variables.tf, outputs.tf. Спочатку налаштуємо main.tf із основною конфігурацією.
 
 Щоб створити віртуальну машину, напишемо наступний код:
-
+```
 terraform {
   required_providers {
     google = {
@@ -96,18 +96,20 @@ resource "google_compute_firewall" "vpc-network-allow" {
   target_tags = ["http-server","https-server"]
   source_tags = ["vpc-network-allow"]
 }
-
+```
 
 Що робить код:
-1)Вказує terraform, що буде працювати із gcp;
 
-2)Додає модуль gcp під назвою google_compute_subnetwork для створення,  subnetworks. Дає цьому ресурсу назву lab3network, створили його у тому ж регіоні та vpc мережі, що і наша машина, а також задали діапазон адресів, що може займатися даною підмережею;
+1. Вказує terraform, що буде працювати із gcp;
 
-3)Створили віртуальну машину з необхідними тегами;
+2. Додає модуль gcp під назвою google_compute_subnetwork для створення,  subnetworks. Дає цьому ресурсу назву lab3network, створили його у тому ж регіоні та vpc мережі, що і наша машина, а також задали діапазон адресів, що може займатися даною підмережею;
 
-4)Конфігуруємо брандмауер для того, щоб він дозволив роботу із tcp протоколом на вказаних портах та щоб він дозволив роботу із протоколами http та https.
+3. Створили віртуальну машину з необхідними тегами;
+
+4. Конфігуруємо брандмауер для того, щоб він дозволив роботу із tcp протоколом на вказаних портах та щоб він дозволив роботу із протоколами http та https.
 
 Файли variables.tf та outputs.tf виглядають так:
+```
 variable "project" {
     default = "lab-3-382613"
 }
@@ -131,8 +133,9 @@ variable "machine_name" {
 variable "subnet_name" {
   default = "lab-3-382613-subnet-1"
 }
-
+```
 outputs.tf
+```
 output "ip_intra" {
   value = google_compute_instance.vm_instance.network_interface.0.network_ip
 }
@@ -140,7 +143,7 @@ output "ip_intra" {
 output "ip_extra" {
   value = google_compute_instance.vm_instance.network_interface.0.access_config.0.nat_ip
 }
-
+```
 Тепер перейдемо до директорії через термінал на пропишемо команду:
 
 terraform init
@@ -161,13 +164,14 @@ terraform apply
 
 Все працює коректно, отримали:
 
+```
 Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 
 Outputs:
 
 ip_extra = "35.193.73.210"
 ip_intra = "10.128.0.2"
-
+```
 Отримали дві ip-адреси. Одна з них – внутрішня адреса у VPC мережі Google, а інша – адреса NAT.
 
 Подивимося чи вірно все було створино:
