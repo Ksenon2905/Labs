@@ -145,17 +145,17 @@ output "ip_extra" {
 }
 ```
 Тепер перейдемо до директорії через термінал на пропишемо команду:
-
+```
 terraform init
-
+```
 Отримуємо наступне:
 
 ![](screenshots/screen5.png)
 
 Далі пишемо:
-
+```
 terraform apply
-
+```
 Отримаємо список того, що планує зробити terraform:
 
 ![](screenshots/screen6.png)
