@@ -39,9 +39,9 @@
 2. Другий VM instance створимо за допомогою утиліти gcloud:
 
 Введемо в термінал:
-
+```
 gcloud compute instances create ubuntuinstance --image-family=ubuntu-minimal-2204-lts --image-project=ubuntu-os-cloud --zone=us-central1-a
-
+```
 Тобто, ми створюємо instance із іменем ubuntuinstance, із операційною системою ubuntu-minimal-2204-lts, із проекту ubuntu-os-cloud та в зоні us-centrali-a
 
 ![](screen6.png)
