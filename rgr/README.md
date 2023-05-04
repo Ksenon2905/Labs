@@ -1,5 +1,5 @@
 # Розрахунково-графічна робота
-## Автоматизація розгортка сайту у GCP із використанням Terraform та Jenkins
+## Автоматизація розгортки сайту у GCP із використанням Terraform та Jenkins
 ## 1. Підготовка GCP для автоматизації
 Створюємо проект у GCP в якому ми будемо створювати віртуальні машини за допомогою terraform.Докладно створення проекту ми розглянули в лабораторній роботі №3, тому в описі немає сенсу.
 Для роботи із віртуальними машинами треба включити Compute Engine API.
@@ -8,7 +8,7 @@
 ## 2. Автоматизація створення віртуальної машини за допомогою terraform
 
 Автоматичне створення ВМ за допомогою terraform ми розглядали в лабораторній роботі №3.
-Одразу пропишиме .tf файли та коротко розглянемо їх.
+Одразу пропишимо .tf файли та коротко розглянемо їх.
 ```
 terraform {
   required_providers {
@@ -51,7 +51,7 @@ resource "google_compute_instance" "vm_instance" {
 
 resource "google_compute_firewall" "rules" {
   project       = var.project
-  name          = "allowall"
+  name          = "rgrfirewall"
   network       = google_compute_network.vpc_network.self_link
   source_ranges = ["0.0.0.0/0"]
 
