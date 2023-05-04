@@ -210,7 +210,7 @@ pipeline
         {
             steps {
                 echo "Setup Section GO"
-                sh 'sudo apt-get install apache2'
+                sh 'sudo apt-get --assume-yes install apache2'
                 sh 'sudo cp -f ${WORKSPACE}/index.html /var/www/html/'
                 echo "Setup OKOK"
             }
@@ -274,7 +274,7 @@ Content type -> application/x-www-form-urlencoded
 
 До цього моменту ми не перевіряли Jenkins і вважали, що все працює вірно. Але треба перевірити, чи дійсно в нас розгорнулася сторінка і чи можна зайти на неї.
 
-Перейдемо за адресою http://34.122.224.150/ та перевіримо:
+Перейдемо за адресою http://35.184.75.96 та перевіримо:
 
 ![](screenshots/screen5.png)
 
